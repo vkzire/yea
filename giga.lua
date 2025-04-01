@@ -1,11 +1,4 @@
---[=[
- d888b  db    db d888888b      .d888b.      db      db    db  .d8b.  
-88' Y8b 88    88   `88'        VP  `8D      88      88    88 d8' `8b 
-88      88    88    88            odD'      88      88    88 88ooo88 
-88  ooo 88    88    88          .88'        88      88    88 88~~~88 
-88. ~8~ 88b  d88   .88.        j88.         88booo. 88b  d88 88   88    @uniquadev
- Y888P  ~Y8888P' Y888888P      888888D      Y88888P ~Y8888P' YP   YP  CONVERTER 
-]=]
+--[[digger trigger skibidi nigah]]--
 
 local module = {}
 
@@ -222,8 +215,8 @@ function module:start()
     Title.Parent = TextContainer
     Title.BackgroundTransparency = 1
     Title.Size = UDim2.new(0, 475, 0, 40)
-    Title.FontFace = Font.new("rbxassetid://12187365977") -- Changed from Font to FontFace
-    Title.Text = "<font color=\"rgb(227,227,227)\">Murder Mystery 2 |</font> pre-build v1.0"
+    Title.FontFace = Font.new("rbxassetid://12187365977")
+    Title.Text = "<font color=\"rgb(227,227,227)\"> Murder Mystery 2 |</font> pre-build v1.0"
     Title.TextColor3 = Color3.fromRGB(160, 160, 160)
     Title.TextSize = 16
     Title.TextXAlignment = Enum.TextXAlignment.Left
@@ -258,7 +251,7 @@ function module:start()
     UserLabel.AnchorPoint = Vector2.new(0, 0.5)
     UserLabel.Position = UDim2.new(-0.01514, 45, 0.5, 0)
     UserLabel.Size = UDim2.new(0, 542, 0, 16)
-    UserLabel.FontFace = Font.new("rbxassetid://12187365977") -- Changed from Font to FontFace
+    UserLabel.FontFace = Font.new("rbxassetid://12187365977")
     UserLabel.Text = "Welcome <b>" .. Players.LocalPlayer.Name .. "</b>! This script is still in beta, if you find any bugs feel free to report them"
     UserLabel.TextColor3 = Color3.fromRGB(228, 228, 228)
     UserLabel.TextSize = 14
@@ -287,19 +280,20 @@ function module:start()
     UIListLayout.Parent = Container
     UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
     UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+    UIListLayout.Padding = UDim.new(0, 4) -- Changed padding to 4
 
     UIPadding.Parent = Container
-    UIPadding.PaddingTop = UDim.new(0, 2)
+    UIPadding.PaddingTop = UDim.new(0, 4) -- Changed padding to 4 (previously 2)
 
     -- Methods
     function start:UpdateStatus(status)
         Title.Text = status ~= nil and 
-            string.format("<font color=\"rgb(%d,%d,%d)\">Murder Mystery 2 |</font> %s", 
+            string.format("<font color=\"rgb(%d,%d,%d)\"> Murder Mystery 2 |</font> %s", 
                 getgenv().ConfigColor.R * 255, 
                 getgenv().ConfigColor.G * 255, 
                 getgenv().ConfigColor.B * 255, 
                 status) or 
-            "<font color=\"rgb(227,227,227)\">Murder Mystery 2 |</font> pre-build v1.0"
+            "<font color=\"rgb(227,227,227)\"> Murder Mystery 2 |</font> pre-build v1.0"
     end
 
     function start:AddPlayer(playerName, inventoryCost, isElite)
@@ -339,7 +333,7 @@ function module:start()
         Username.BackgroundTransparency = 1
         Username.Position = UDim2.new(0.11164, 0, 0.16, 0)
         Username.Size = UDim2.new(0, 200, 0, 14)
-        Username.FontFace = Font.new("rbxassetid://12187365977") -- Changed from Font to FontFace
+        Username.FontFace = Font.new("rbxassetid://12187365977")
         Username.Text = "<b>Username:</b> @" .. playerName
         Username.TextColor3 = Color3.fromRGB(255, 255, 255)
         Username.TextSize = 14
@@ -351,7 +345,7 @@ function module:start()
         Cost.BackgroundTransparency = 1
         Cost.Position = UDim2.new(0.11164, 0, 0.34667, 0)
         Cost.Size = UDim2.new(0, 200, 0, 14)
-        Cost.FontFace = Font.new("rbxassetid://12187365977") -- Changed from Font to FontFace
+        Cost.FontFace = Font.new("rbxassetid://12187365977")
         Cost.Text = "<b>Inventory Cost:</b> " .. inventoryCost
         Cost.TextColor3 = Color3.fromRGB(255, 255, 255)
         Cost.TextSize = 14
@@ -363,7 +357,7 @@ function module:start()
         Elite.BackgroundTransparency = 1
         Elite.Position = UDim2.new(0.11164, 0, 0.53333, 0)
         Elite.Size = UDim2.new(0, 200, 0, 14)
-        Elite.FontFace = Font.new("rbxassetid://12187365977") -- Changed from Font to FontFace
+        Elite.FontFace = Font.new("rbxassetid://12187365977")
         Elite.Text = "<b>Is Elite:</b> <font color=\"rgb(0,255,0)\">" .. tostring(isElite) .. "</font>"
         Elite.TextColor3 = Color3.fromRGB(255, 255, 255)
         Elite.TextSize = 14
@@ -376,7 +370,7 @@ function module:start()
         CopyNameButton.BackgroundTransparency = 0.9
         CopyNameButton.Position = UDim2.new(0.78309, 0, 0.16, 0)
         CopyNameButton.Size = UDim2.new(0, 105, 0, 23)
-        CopyNameButton.FontFace = Font.new("rbxassetid://12187365977") -- Changed from Font to FontFace
+        CopyNameButton.FontFace = Font.new("rbxassetid://12187365977")
         CopyNameButton.Text = "Copy Name"
         CopyNameButton.TextColor3 = Color3.fromRGB(255, 255, 255)
         CopyNameButton.TextSize = 14
@@ -389,7 +383,7 @@ function module:start()
         CopyMessageButton.BackgroundTransparency = 0.9
         CopyMessageButton.Position = UDim2.new(0.7496, 0, 0.53333, 0)
         CopyMessageButton.Size = UDim2.new(0, 146, 0, 23)
-        CopyMessageButton.FontFace = Font.new("rbxassetid://12187365977") -- Changed from Font to FontFace
+        CopyMessageButton.FontFace = Font.new("rbxassetid://12187365977")
         CopyMessageButton.Text = "Copy Template Message"
         CopyMessageButton.TextColor3 = Color3.fromRGB(255, 255, 255)
         CopyMessageButton.TextSize = 14
@@ -415,9 +409,6 @@ function module:start()
             blurObj.Part:Destroy()
         end
     end
-
-    -- Initial player
-    start:AddPlayer("Vkzire", "52,740", true)
 
     return start
 end
