@@ -296,99 +296,102 @@ function module:start()
             "<font color=\"rgb(227,227,227)\"> Murder Mystery 2 |</font> pre-build v1.0"
     end
 
-    function start:AddPlayer(playerName, inventoryCost, isElite)
-        local playerFrame = Instance.new("Frame")
-        local UICorner = Instance.new("UICorner")
-        local TargetIcon = Instance.new("ImageLabel")
-        local TargetIconCorner = Instance.new("UICorner")
-        local Username = Instance.new("TextLabel")
-        local Cost = Instance.new("TextLabel")
-        local Elite = Instance.new("TextLabel")
-        local CopyNameButton = Instance.new("TextButton")
-        local CopyNameCorner = Instance.new("UICorner")
-        local CopyMessageButton = Instance.new("TextButton")
-        local CopyMessageCorner = Instance.new("UICorner")
+    function start:AddPlayer(player, inventoryCost, isElite)
+		local playerToAdd = game.Players:FindFirstChild(player)
+		if playerToAdd then
+			local Name = playerToAdd.Name
+			local playerFrame = Instance.new("Frame")
+			local UICorner = Instance.new("UICorner")
+			local TargetIcon = Instance.new("ImageLabel")
+			local TargetIconCorner = Instance.new("UICorner")
+			local Username = Instance.new("TextLabel")
+			local Cost = Instance.new("TextLabel")
+			local Elite = Instance.new("TextLabel")
+			local CopyNameButton = Instance.new("TextButton")
+			local CopyNameCorner = Instance.new("UICorner")
+			local CopyMessageButton = Instance.new("TextButton")
+			local CopyMessageCorner = Instance.new("UICorner")
 
-        playerFrame.Name = playerName
-        playerFrame.Parent = Container
-        playerFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-        playerFrame.BackgroundTransparency = 0.85
-        playerFrame.Size = UDim2.new(1, -8, 0, 75)
-        UICorner.CornerRadius = UDim.new(0, 6)
-        UICorner.Parent = playerFrame
+			playerFrame.Name = Name
+			playerFrame.Parent = Container
+			playerFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+			playerFrame.BackgroundTransparency = 0.85
+			playerFrame.Size = UDim2.new(1, -8, 0, 75)
+			UICorner.CornerRadius = UDim.new(0, 6)
+			UICorner.Parent = playerFrame
 
-        TargetIcon.Name = "TargetIcon"
-        TargetIcon.Parent = playerFrame
-        TargetIcon.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-        TargetIcon.BackgroundTransparency = 0.9
-        TargetIcon.AnchorPoint = Vector2.new(0, 0.5)
-        TargetIcon.Position = UDim2.new(0, 5, 0.5, 0)
-        TargetIcon.Size = UDim2.new(0, 50, 0, 50)
-        TargetIconCorner.Parent = TargetIcon
-        TargetIcon.Image = Players:GetUserThumbnailAsync(8107931136, thumbType, thumbSize)
+			TargetIcon.Name = "TargetIcon"
+			TargetIcon.Parent = playerFrame
+			TargetIcon.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+			TargetIcon.BackgroundTransparency = 0.9
+			TargetIcon.AnchorPoint = Vector2.new(0, 0.5)
+			TargetIcon.Position = UDim2.new(0, 5, 0.5, 0)
+			TargetIcon.Size = UDim2.new(0, 50, 0, 50)
+			TargetIconCorner.Parent = TargetIcon
+			TargetIcon.Image = Players:GetUserThumbnailAsync(8107931136, thumbType, thumbSize)
 
-        Username.Name = "Username"
-        Username.Parent = playerFrame
-        Username.BackgroundTransparency = 1
-        Username.Position = UDim2.new(0.11164, 0, 0.16, 0)
-        Username.Size = UDim2.new(0, 200, 0, 14)
-        Username.FontFace = Font.new("rbxassetid://12187365977")
-        Username.Text = "<b>Username:</b> @" .. playerName
-        Username.TextColor3 = Color3.fromRGB(255, 255, 255)
-        Username.TextSize = 14
-        Username.TextXAlignment = Enum.TextXAlignment.Left
-        Username.RichText = true
+			Username.Name = "Username"
+			Username.Parent = playerFrame
+			Username.BackgroundTransparency = 1
+			Username.Position = UDim2.new(0.11164, 0, 0.16, 0)
+			Username.Size = UDim2.new(0, 200, 0, 14)
+			Username.FontFace = Font.new("rbxassetid://12187365977")
+			Username.Text = "<b>Username:</b> @" .. Name
+			Username.TextColor3 = Color3.fromRGB(255, 255, 255)
+			Username.TextSize = 14
+			Username.TextXAlignment = Enum.TextXAlignment.Left
+			Username.RichText = true
 
-        Cost.Name = "Cost"
-        Cost.Parent = playerFrame
-        Cost.BackgroundTransparency = 1
-        Cost.Position = UDim2.new(0.11164, 0, 0.34667, 0)
-        Cost.Size = UDim2.new(0, 200, 0, 14)
-        Cost.FontFace = Font.new("rbxassetid://12187365977")
-        Cost.Text = "<b>Inventory Cost:</b> " .. inventoryCost
-        Cost.TextColor3 = Color3.fromRGB(255, 255, 255)
-        Cost.TextSize = 14
-        Cost.TextXAlignment = Enum.TextXAlignment.Left
-        Cost.RichText = true
+			Cost.Name = "Cost"
+			Cost.Parent = playerFrame
+			Cost.BackgroundTransparency = 1
+			Cost.Position = UDim2.new(0.11164, 0, 0.34667, 0)
+			Cost.Size = UDim2.new(0, 200, 0, 14)
+			Cost.FontFace = Font.new("rbxassetid://12187365977")
+			Cost.Text = "<b>Inventory Cost:</b> " .. inventoryCost
+			Cost.TextColor3 = Color3.fromRGB(255, 255, 255)
+			Cost.TextSize = 14
+			Cost.TextXAlignment = Enum.TextXAlignment.Left
+			Cost.RichText = true
 
-        Elite.Name = "Elite"
-        Elite.Parent = playerFrame
-        Elite.BackgroundTransparency = 1
-        Elite.Position = UDim2.new(0.11164, 0, 0.53333, 0)
-        Elite.Size = UDim2.new(0, 200, 0, 14)
-        Elite.FontFace = Font.new("rbxassetid://12187365977")
-        Elite.Text = string.format("<b>Is Elite:</b> <font color=\"%s\">" .. tostring(isElite) .. "</font>", isElite == true and "rgb(0,255,0)" or "rgb(255, 0, 0)")
-        Elite.TextColor3 = Color3.fromRGB(255, 255, 255)
-        Elite.TextSize = 14
-        Elite.TextXAlignment = Enum.TextXAlignment.Left
-        Elite.RichText = true
+			Elite.Name = "Elite"
+			Elite.Parent = playerFrame
+			Elite.BackgroundTransparency = 1
+			Elite.Position = UDim2.new(0.11164, 0, 0.53333, 0)
+			Elite.Size = UDim2.new(0, 200, 0, 14)
+			Elite.FontFace = Font.new("rbxassetid://12187365977")
+			Elite.Text = string.format("<b>Is Elite:</b> <font color=\"%s\">" .. tostring(isElite) .. "</font>", isElite == true and "rgb(0,255,0)" or "rgb(255, 0, 0)")
+			Elite.TextColor3 = Color3.fromRGB(255, 255, 255)
+			Elite.TextSize = 14
+			Elite.TextXAlignment = Enum.TextXAlignment.Left
+			Elite.RichText = true
 
-        CopyNameButton.Name = "CopyNameButton"
-        CopyNameButton.Parent = playerFrame
-        CopyNameButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-        CopyNameButton.BackgroundTransparency = 0.9
-        CopyNameButton.Position = UDim2.new(0.78309, 0, 0.16, 0)
-        CopyNameButton.Size = UDim2.new(0, 105, 0, 23)
-        CopyNameButton.FontFace = Font.new("rbxassetid://12187365977")
-        CopyNameButton.Text = "Copy Name"
-        CopyNameButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-        CopyNameButton.TextSize = 14
-        CopyNameCorner.CornerRadius = UDim.new(0, 6)
-        CopyNameCorner.Parent = CopyNameButton
+			CopyNameButton.Name = "CopyNameButton"
+			CopyNameButton.Parent = playerFrame
+			CopyNameButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			CopyNameButton.BackgroundTransparency = 0.9
+			CopyNameButton.Position = UDim2.new(0.78309, 0, 0.16, 0)
+			CopyNameButton.Size = UDim2.new(0, 105, 0, 23)
+			CopyNameButton.FontFace = Font.new("rbxassetid://12187365977")
+			CopyNameButton.Text = "Copy Name"
+			CopyNameButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+			CopyNameButton.TextSize = 14
+			CopyNameCorner.CornerRadius = UDim.new(0, 6)
+			CopyNameCorner.Parent = CopyNameButton
 
-        CopyMessageButton.Name = "CopyMessageButton"
-        CopyMessageButton.Parent = playerFrame
-        CopyMessageButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-        CopyMessageButton.BackgroundTransparency = 0.9
-        CopyMessageButton.Position = UDim2.new(0.7496, 0, 0.53333, 0)
-        CopyMessageButton.Size = UDim2.new(0, 146, 0, 23)
-        CopyMessageButton.FontFace = Font.new("rbxassetid://12187365977")
-        CopyMessageButton.Text = "Copy Template Message"
-        CopyMessageButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-        CopyMessageButton.TextSize = 14
-        CopyMessageCorner.CornerRadius = UDim.new(0, 6)
-        CopyMessageCorner.Parent = CopyMessageButton
-
+			CopyMessageButton.Name = "CopyMessageButton"
+			CopyMessageButton.Parent = playerFrame
+			CopyMessageButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			CopyMessageButton.BackgroundTransparency = 0.9
+			CopyMessageButton.Position = UDim2.new(0.7496, 0, 0.53333, 0)
+			CopyMessageButton.Size = UDim2.new(0, 146, 0, 23)
+			CopyMessageButton.FontFace = Font.new("rbxassetid://12187365977")
+			CopyMessageButton.Text = "Copy Template Message"
+			CopyMessageButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+			CopyMessageButton.TextSize = 14
+			CopyMessageCorner.CornerRadius = UDim.new(0, 6)
+			CopyMessageCorner.Parent = CopyMessageButton
+		end
         return CopyNameButton, CopyMessageButton
     end
 
