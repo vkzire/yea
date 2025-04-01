@@ -1,4 +1,4 @@
---[[digger trigger skibidi nigah]]--
+--[[ezz]]--
 
 local module = {}
 
@@ -58,9 +58,9 @@ function module:start()
     BLUR_OBJ.InFocusRadius = 0
     BLUR_OBJ.Parent = Lighting
 
-    UI.Name = "MM2GUI_" .. tostring(math.random(5, 100000))
-    UI.Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
-    UI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    UI.Name = "EZ" .. tostring(math.random(5, 100000))
+    UI.Parent = game.CoreGui
+    UI.ZIndexBehavior = Enum.ZIndexBehavior.Global
 
     Main.Name = "Main"
     Main.Parent = UI
@@ -297,7 +297,6 @@ function module:start()
     end
 
     function start:AddPlayer(playerName, inventoryCost, isElite)
-        local x = {}
         local playerFrame = Instance.new("Frame")
         local UICorner = Instance.new("UICorner")
         local TargetIcon = Instance.new("ImageLabel")
@@ -358,7 +357,7 @@ function module:start()
         Elite.Position = UDim2.new(0.11164, 0, 0.53333, 0)
         Elite.Size = UDim2.new(0, 200, 0, 14)
         Elite.FontFace = Font.new("rbxassetid://12187365977")
-        Elite.Text = "<b>Is Elite:</b> <font color=\"rgb(0,255,0)\">" .. tostring(isElite) .. "</font>"
+        Elite.Text = string.format("<b>Is Elite:</b> <font color=\"%s\">" .. tostring(isElite) .. "</font>", isElite == true and "rgb(0,255,0)" or "rgb(255, 0, 0)")
         Elite.TextColor3 = Color3.fromRGB(255, 255, 255)
         Elite.TextSize = 14
         Elite.TextXAlignment = Enum.TextXAlignment.Left
@@ -390,15 +389,7 @@ function module:start()
         CopyMessageCorner.CornerRadius = UDim.new(0, 6)
         CopyMessageCorner.Parent = CopyMessageButton
 
-        function x:SetNameCallback(callback)
-            CopyNameButton.MouseButton1Click:Connect(callback)
-        end
-
-        function x:SetMessageCallback(callback)
-            CopyMessageButton.MouseButton1Click:Connect(callback)
-        end
-
-        return x
+        return CopyNameButton, CopyMessageButton
     end
 
     function start:Destroy()
